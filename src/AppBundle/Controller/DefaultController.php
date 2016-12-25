@@ -21,8 +21,11 @@ class DefaultController extends Controller
                 ->build();
       $query = 'match (n:termes)<-[r]-() where n.name = "rapidement" and type(r) = "34" return n limit 20';
       $result = $client->run($query);
-
-      return $this->render('AppBundle:Default:index.html.twig',array("result" => $result->getRecord()));
+      $arr = array();
+      foreach ($result->records() as $record) {
+        array_push($arr,$record->nodeValue('n')->values());
+      }
+      return $this->render('AppBundle:Default:index.html.twig',array("result" => $arr));
     }
 
     /**
@@ -34,9 +37,13 @@ class DefaultController extends Controller
       $client = ClientBuilder::create()
                 ->addConnection('default','http://neo4j:yodalapute123@localhost:7474')
                 ->build();
-      $query = 'match (n:termes)<-[r]-() where n.name = "rapidement" and type(r) = "34" return r limit 20';
+      $query = 'match (n:termes)<-[r]-() where n.name = "rapidement" and type(r) = "34" return n limit 20';
       $result = $client->run($query);
-      $response = new Response(json_encode($result->getRecord()));
+      $arr = array();
+      foreach ($result->records() as $record) {
+        array_push($arr,$record->nodeValue('n')->values());
+      }
+      $response = new Response(json_encode($arr));
       $response->headers->set('Content-Type','application/json');
 
       return $response;
