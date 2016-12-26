@@ -3,8 +3,5 @@
 {% block title %}Hello !{% endblock %}
 {% block body %}
   <h1>Hello</h1>
-  {{ dump(result.values[0].values()["eid"]) }}
-  {% for value in result %}
-      <p>{{ value }}</p>
-  {% endfor %}
+  {{ dump(result) }}
 {% endblock %}
