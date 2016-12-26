@@ -8,6 +8,12 @@
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        <script src="{{asset('vendor/jquery/dist/jquery.js')}}"></script>
+        <script src="{{asset('vendor/materialize/dist/js/materialize.js')}}"></script>
+        <script src="{{asset('vendor/vue/dist/vue.js')}}"></script>
+        <script src="{{asset('vue_app/test.js')}}"></script>
+        <script src="{{asset('vue_app/app.js')}}"></script>
+        {% endblock %}
     </body>
 </html>

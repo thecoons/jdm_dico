@@ -31,7 +31,7 @@ class DefaultController extends Controller
     /**
     * @Route("/test/{word}",name="testpage")
     */
-    public function testAction(String $word)
+    public function testAction($word)
     {
       $em = $this->container->get('neo4j.manager');
       $client = ClientBuilder::create()
