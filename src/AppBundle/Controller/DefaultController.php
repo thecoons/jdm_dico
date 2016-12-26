@@ -31,13 +31,13 @@ class DefaultController extends Controller
     /**
     * @Route("/test/{word}",name="testpage")
     */
-    public function testAction($word)
+    public function testAction(String $word)
     {
       $em = $this->container->get('neo4j.manager');
       $client = ClientBuilder::create()
                 ->addConnection('default','http://neo4j:yodalapute123@localhost:7474')
                 ->build();
-      $query = 'match (n:termes) where n.name = "tigre" return n limit 20';
+      $query = sprintf('match (n:termes) where n.name = "%s" return n limit 10',$word);
       $result = $client->run($query);
       $arr = array();
       foreach ($result->records() as $record) {
