@@ -3,7 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Accueil{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <link href="{{asset('vendor/materialize/dist/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -12,6 +16,7 @@
         <script src="{{asset('vendor/jquery/dist/jquery.js')}}"></script>
         <script src="{{asset('vendor/materialize/dist/js/materialize.js')}}"></script>
         <script src="{{asset('vendor/vue/dist/vue.js')}}"></script>
+        <script src="{{asset('vendor/vue-resource/dist/vue-resource.js')}}"></script>
         <script src="{{asset('vue_app/test.js')}}"></script>
         <script src="{{asset('vue_app/app.js')}}"></script>
         {% endblock %}
