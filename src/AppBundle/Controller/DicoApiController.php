@@ -131,7 +131,7 @@ class DicoApiController extends Controller
     }
 
     /**
-     * @Route("/isa/{mot}/{nb}",name="raff_sem_page")
+     * @Route("/isa/{mot}/{nb}",name="is_action")
      */
     public function isaAction($mot,$nb)
     {

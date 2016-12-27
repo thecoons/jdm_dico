@@ -2,9 +2,23 @@
 
 {% block title %}Hello !{% endblock %}
 {% block body %}
-  <h1>Hello</h1>
-  <div class="" id="app">
-    ${ titre }
-    <test-item></test-item>
+  <div class="section"  id="app">
+    <div class="content">
+      <h1>JDM Dico</h1>
+      <div class="row">
+        <div class="input-field col s3">
+          <input id="word" type="text" class="validate" v-model="word">
+          <label for="word">Entrer un mot :</label>
+        </div>
+        <a class="waves-effect waves-light btn" @click="refreshAll">button</a>
+      </div>
+      <test-item :datarow="test"></test-item>
+      <comp-grammaire :datarow="grammaire"></comp-grammaire>
+      <comp-definition :datarow="definition"></comp-definition>
+      <comp-association :datarow="association"></comp-association>
+      <comp-domain :datarow="domain"></comp-domain>
+      <comp-raffsem :datarow="raffsem"></comp-raffsem>
+      <comp-action :datarow="isaction"></comp-action>
+    </div>
   </div>
 {% endblock %}

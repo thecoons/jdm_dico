@@ -1,8 +1,8 @@
-Vue.component('test-item',{
+Vue.component('comp-raffsem',{
   props: ['datarow'],
   template: '<div class="row">\
                 <div class="col s4">\
-                  <h5> Test </h5>\
+                  <h5> Rafinement Sémentique </h5>\
                   <p> {{datarow}} </p>\
                 </div>\
               </div>',
@@ -24,6 +24,5 @@ Vue.component('test-item',{
 
   },
   mounted: function(){
-    window.test = this
   }
 })
