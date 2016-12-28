@@ -28,9 +28,6 @@
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
-        "everyman/neo4jphp": "dev-master",
-        "hirevoice/neo4jphp-ogm": "dev-master",
-        "klaussilveira/neo4j-ogm-bundle": "dev-master",
         "graphaware/neo4j-php-client": "^4.0"
 
 
