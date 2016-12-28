@@ -16,8 +16,13 @@ class DicoApiController extends Controller
     public function grammaireAction($mot)
     {
         $em = $this->container->get('neo4j.manager');
+        $user_neo = $this->container->getParameter('neo4j_user');
+        $pass_neo = $this->container->getParameter('neo4j_pass');
+        $host_neo = $this->container->getParameter('neo4j_host');
+        $port_neo = $this->container->getParameter('neo4j_port');
+        $login = sprintf('http://%s:%s@%s:%s',$user_neo,$pass_neo,$host_neo,$port_neo);
         $client = ClientBuilder::create()
-            ->addConnection('default','http://neo4j:yodalapute123@localhost:7474')
+            ->addConnection('default',$login)
             ->build();
         $query = sprintf('match (n:termes)-[r]->(m) WHERE n.name = "%s" and type(r) = "4" return m ORDER BY r.weight DESC',$mot);
         $result = $client->run($query);
@@ -36,8 +41,13 @@ class DicoApiController extends Controller
     public function definitionAction($mot)
     {
         $em = $this->container->get('neo4j.manager');
+        $user_neo = $this->container->getParameter('neo4j_user');
+        $pass_neo = $this->container->getParameter('neo4j_pass');
+        $host_neo = $this->container->getParameter('neo4j_host');
+        $port_neo = $this->container->getParameter('neo4j_port');
+        $login = sprintf('http://%s:%s@%s:%s',$user_neo,$pass_neo,$host_neo,$port_neo);
         $client = ClientBuilder::create()
-            ->addConnection('default','http://neo4j:yodalapute123@localhost:7474')
+            ->addConnection('default',$login)
             ->build();
         $query = sprintf('match (n:termes),(def:definitions) WHERE n.name = "%s" and toInt(n.eid) = def.termid return def',$mot);
         $result = $client->run($query);
@@ -56,8 +66,13 @@ class DicoApiController extends Controller
     public function lemmeAction($mot)
     {
         $em = $this->container->get('neo4j.manager');
+        $user_neo = $this->container->getParameter('neo4j_user');
+        $pass_neo = $this->container->getParameter('neo4j_pass');
+        $host_neo = $this->container->getParameter('neo4j_host');
+        $port_neo = $this->container->getParameter('neo4j_port');
+        $login = sprintf('http://%s:%s@%s:%s',$user_neo,$pass_neo,$host_neo,$port_neo);
         $client = ClientBuilder::create()
-            ->addConnection('default','http://neo4j:yodalapute123@localhost:7474')
+            ->addConnection('default',$login)
             ->build();
         $query = sprintf('match (n:termes)<-[r]-(lem:termes) WHERE n.name = "%s" and type(r) = "19" return lem',$mot);
         $result = $client->run($query);
@@ -76,8 +91,13 @@ class DicoApiController extends Controller
     public function associAction($mot,$nb)
     {
         $em = $this->container->get('neo4j.manager');
+        $user_neo = $this->container->getParameter('neo4j_user');
+        $pass_neo = $this->container->getParameter('neo4j_pass');
+        $host_neo = $this->container->getParameter('neo4j_host');
+        $port_neo = $this->container->getParameter('neo4j_port');
+        $login = sprintf('http://%s:%s@%s:%s',$user_neo,$pass_neo,$host_neo,$port_neo);
         $client = ClientBuilder::create()
-            ->addConnection('default','http://neo4j:yodalapute123@localhost:7474')
+            ->addConnection('default',$login)
             ->build();
         $query = sprintf('match (n:termes)<-[r]-(asso:termes) WHERE n.name = "%s" and type(r) = "0" return asso order by r.weight desc limit %d',$mot,$nb);
         $result = $client->run($query);
@@ -95,8 +115,13 @@ class DicoApiController extends Controller
     public function domainAction($mot,$nb)
     {
         $em = $this->container->get('neo4j.manager');
+        $user_neo = $this->container->getParameter('neo4j_user');
+        $pass_neo = $this->container->getParameter('neo4j_pass');
+        $host_neo = $this->container->getParameter('neo4j_host');
+        $port_neo = $this->container->getParameter('neo4j_port');
+        $login = sprintf('http://%s:%s@%s:%s',$user_neo,$pass_neo,$host_neo,$port_neo);
         $client = ClientBuilder::create()
-            ->addConnection('default','http://neo4j:yodalapute123@localhost:7474')
+            ->addConnection('default',$login)
             ->build();
         $query = sprintf('match (n:termes)-[r]->(dom:termes) WHERE n.name = "%s" and type(r) = "3" return dom order by r.weight desc limit %d',$mot,$nb);
         $result = $client->run($query);
@@ -115,8 +140,13 @@ class DicoApiController extends Controller
     public function raffSemAction($mot,$nb)
     {
         $em = $this->container->get('neo4j.manager');
+        $user_neo = $this->container->getParameter('neo4j_user');
+        $pass_neo = $this->container->getParameter('neo4j_pass');
+        $host_neo = $this->container->getParameter('neo4j_host');
+        $port_neo = $this->container->getParameter('neo4j_port');
+        $login = sprintf('http://%s:%s@%s:%s',$user_neo,$pass_neo,$host_neo,$port_neo);
         $client = ClientBuilder::create()
-            ->addConnection('default','http://neo4j:yodalapute123@localhost:7474')
+            ->addConnection('default',$login)
             ->build();
         $query = sprintf('match (n:termes)-[r]->(raff:termes) WHERE n.name = "%s" and type(r) = "1" return raff order by r.weight desc limit %d',$mot,$nb);
         $result = $client->run($query);
@@ -136,8 +166,13 @@ class DicoApiController extends Controller
     public function isaAction($mot,$nb)
     {
         $em = $this->container->get('neo4j.manager');
+        $user_neo = $this->container->getParameter('neo4j_user');
+        $pass_neo = $this->container->getParameter('neo4j_pass');
+        $host_neo = $this->container->getParameter('neo4j_host');
+        $port_neo = $this->container->getParameter('neo4j_port');
+        $login = sprintf('http://%s:%s@%s:%s',$user_neo,$pass_neo,$host_neo,$port_neo);
         $client = ClientBuilder::create()
-            ->addConnection('default','http://neo4j:yodalapute123@localhost:7474')
+            ->addConnection('default',$login)
             ->build();
         $query = sprintf('match (n:termes)<-[r]-(isa:termes) WHERE n.name = "%s" and type(r) = "6" return isa order by r.weight desc limit %d',$mot,$nb);
         $result = $client->run($query);

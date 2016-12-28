@@ -75,7 +75,7 @@ setTimeout(function(){
       },
       // Methode des raffSem
       getRaffSemApi: function(nb){
-        var resource = this.$resource("/raff_sem/{word}/"+nb)
+        var resource = this.$resource("/raff_sem/{word}/"+nb,[],[],{timeout:0})
         resource.get({word:this.word}).then((data) => {
           this.raffsem =  data.body
         },(data) =>{
