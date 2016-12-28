@@ -6,7 +6,7 @@ A Symfony project created on December 23, 2016, 5:47 pm.
 -----
 # Configuration Neo4j
 
-1. Dowmload and uncompress `neo4j` at this [link](https://neo4j.com/download/).
+1. Download and uncompress `neo4j` at this [link](https://neo4j.com/download/).
 2. Go to the  `neo4j-community-X.X.X/` directory.
 1. Unzip the file `jdm_dbb.tar`
 2. Put all files `*.csv` on the directory `import/`
