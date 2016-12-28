@@ -21,3 +21,17 @@ A Symfony project created on December 23, 2016, 5:47 pm.
 13. And create relations between termes and descriprition with `./bin/neo4j-shell -file importDefRelation.cql`
 14. Try it, go at [Neo4j Web Manager](http://localhost:7474/browser/), at first you have to change your password
 15. Then try this request, `match(n:termes)-[r]->(def:definitions) where type(r) = "A_Def" return n,def,r limit 10`
+
+#Configuration de Symfony
+
+1. When you have clone the repository, you have to install all dependencies, `composer install`
+2. Then you have to add 4 parameters at your `app/config/parameters.yml`
+
+```yaml
+neo4j_user: neo4j
+neo4j_pass: yourpass
+neo4j_host: localhost
+neo4j_port: 7474
+```
+
+3. and now you can start the symfony server `./bin/consoler server:start`
