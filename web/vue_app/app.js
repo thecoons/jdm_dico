@@ -34,7 +34,7 @@ setTimeout(function(){
         resource.get({word:this.word}).then((data) => {
           this.test = data.body
         },(data) =>{
-          this.test = "Error loading data"
+          this.getTestApi()
         });
       },
       // Methode de grammaire
@@ -43,7 +43,7 @@ setTimeout(function(){
         resource.get({word:this.word}).then((data) => {
           this.grammaire = data.body
         },(data) => {
-          this.grammaire = "Error loading data"
+          this.getGrammaireApi()
         });
       },
       // Methode de definition
@@ -52,7 +52,7 @@ setTimeout(function(){
         resource.get({word:this.word}).then((data) => {
           this.definition =  data.body
         },(data) =>{
-          this.definition = "Error loading data"
+          this.getDefinitionApi()
         });
       },
       // Methode des associations
@@ -61,7 +61,7 @@ setTimeout(function(){
         resource.get({word:this.word}).then((data) => {
           this.association =  data.body
         },(data) =>{
-          this.association = "Error loading data"
+          this.getAssociationApi(nb)
         });
       },
       // Methode des domaines
@@ -70,7 +70,7 @@ setTimeout(function(){
         resource.get({word:this.word}).then((data) => {
           this.domain =  data.body
         },(data) =>{
-          this.domain = "Error loading data"
+          this.getDomainApi(nb)
         });
       },
       // Methode des raffSem
@@ -79,7 +79,7 @@ setTimeout(function(){
         resource.get({word:this.word}).then((data) => {
           this.raffsem =  data.body
         },(data) =>{
-          this.raffsem = "Error loading data"
+          this.getRaffSemApi(nb)
         });
       },
       // Methode isAction
@@ -88,7 +88,7 @@ setTimeout(function(){
         resource.get({word:this.word}).then((data) => {
           this.isaction =  data.body
         },(data) =>{
-          this.isaction = "Error loading data"
+          this.getIsActionApi(nb)
         });
       },
     },
