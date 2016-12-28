@@ -49,7 +49,7 @@ class DicoApiController extends Controller
         $client = ClientBuilder::create()
             ->addConnection('default',$login)
             ->build();
-        $query = sprintf('match (n:termes)-[r]->(def:definitions) WHERE n.name = "%s" and type(r) = "A_Def" return def',$mot);
+        $query = sprintf('match (n:termes)-[r]->(def:definitions) WHERE n.name = "%s" and type(r) = "A_Def" return distinct def',$mot);
         $result = $client->run($query);
         $arr = array();
         foreach ($result->records() as $record) {
