@@ -39,7 +39,7 @@ class DicoApiController extends Controller
         $client = ClientBuilder::create()
             ->addConnection('default','http://neo4j:yodalapute123@localhost:7474')
             ->build();
-        $query = sprintf('match (n:termes),(def:definitions) WHERE n.name = "%s" and toInt(n.eid) = def.termid return def',$mot);
+        $query = sprintf('match (n:termes)-[r]->(def:definitions) WHERE n.name = "%s" and type(r) = "A_Def" return def',$mot);
         $result = $client->run($query);
         $arr = array();
         foreach ($result->records() as $record) {
