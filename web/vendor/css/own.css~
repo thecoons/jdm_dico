@@ -1,0 +1,10 @@
+nav
+.brand-logo
+margin-left 20px
+form
+margin-left 180px
+width 300px
+
+nav .nav-wrapper form, nav .nav-wrapper form .input-field{
+    height: 100%;
+}

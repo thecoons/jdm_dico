@@ -1,0 +1,17 @@
+body{
+    background-color:#fcfcfc;
+}
+nav .brand-logo{
+    margin-left: 20px
+}
+nav form{
+    margin-left: 180px;
+    width: 300px
+}
+nav .nav-wrapper form, nav .nav-wrapper form .input-field{
+    height: 100%;
+}
+
+.search-field{
+    margin-top:40px;
+}

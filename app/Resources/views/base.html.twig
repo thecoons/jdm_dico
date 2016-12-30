@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Accueil{% endblock %}</title>
-        {% block stylesheets %}
-          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-          <link href="{{asset('vendor/materialize/dist/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
-
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-        <script src="{{asset('vendor/jquery/dist/jquery.js')}}"></script>
-        <script src="{{asset('vendor/materialize/dist/js/materialize.js')}}"></script>
-        <script src="{{asset('vendor/vue/dist/vue.js')}}"></script>
-        <script src="{{asset('vendor/vue-resource/dist/vue-resource.js')}}"></script>
-        <script src="{{asset('vue_app/test.js')}}"></script>
-        <script src="{{asset('vue_app/comp-grammaire.js')}}"></script>
-        <script src="{{asset('vue_app/comp-definition.js')}}"></script>
-        <script src="{{asset('vue_app/comp-association.js')}}"></script>
-        <script src="{{asset('vue_app/comp-domain.js')}}"></script>
-        <script src="{{asset('vue_app/comp-raffsem.js')}}"></script>
-        <script src="{{asset('vue_app/comp-action.js')}}"></script>        
-        <script src="{{asset('vue_app/app.js')}}"></script>
-        {% endblock %}
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Accueil{% endblock %}</title>
+    {% block stylesheets %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{asset('vendor/materialize/dist/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="{{asset('vendor/css/own.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  </head>
+  <body>
+    
+    {% block body %}{% endblock %}
+    {% block javascripts %}
+    <script src="{{asset('vendor/jquery/dist/jquery.js')}}"></script>
+    <script src="{{asset('vendor/materialize/dist/js/materialize.js')}}"></script>
+    <script src="{{asset('vendor/vue/dist/vue.js')}}"></script>
+    <script src="{{asset('vendor/vue-resource/dist/vue-resource.js')}}"></script>
+    <script src="{{asset('vue_app/test.js')}}"></script>
+    <script src="{{asset('vue_app/comp-grammaire.js')}}"></script>
+    <script src="{{asset('vue_app/comp-definition.js')}}"></script>
+    <script src="{{asset('vue_app/comp-association.js')}}"></script>
+    <script src="{{asset('vue_app/comp-domain.js')}}"></script>
+    <script src="{{asset('vue_app/comp-raffsem.js')}}"></script>
+    <script src="{{asset('vue_app/comp-action.js')}}"></script>        
+    <script src="{{asset('vue_app/app.js')}}"></script>
+    <script src="{{asset('vendor/js/own.js')}}"></script>
+    {% endblock %}
+  </body>
 </html>

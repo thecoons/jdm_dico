@@ -2,23 +2,37 @@
 
 {% block title %}Hello !{% endblock %}
 {% block body %}
-  <div class="section"  id="app">
-    <div class="content">
-      <h1>JDM Dico</h1>
-      <div class="row">
-        <div class="input-field col s3">
-          <input id="word" type="text" class="validate" v-model="word">
-          <label for="word">Entrer un mot :</label>
-        </div>
-        <a class="waves-effect waves-light btn" @click="refreshAll">button</a>
+
+
+<nav class="white" >
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo grey-text">JeuxDeMots / <span class="black-text">Diko</span></a>
+  </div>
+</nav>
+<div id="app">
+  <div class="row search-field">
+    <div class="container">
+      <div class="input-field col s12 m6 offset-m3">
+	<form onsubmit="return false;">
+          <input type="text" id="word" class="autocomplete validate" v-model="word">
+          <label for="word">Recherche</label>
+	  <button class="btn waves-effect waves-light center" @click="refreshAll" type="submit" name="action">Rechercher
+	    <i class="material-icons right">send</i>
+	  </button>
+
+	  <form>
       </div>
-      <test-item :datarow="test"></test-item>
-      <comp-grammaire :datarow="grammaire"></comp-grammaire>
-      <comp-definition :datarow="definition"></comp-definition>
-      <comp-association :datarow="association"></comp-association>
-      <comp-domain :datarow="domain"></comp-domain>
-      <comp-raffsem :datarow="raffsem"></comp-raffsem>
-      <comp-action :datarow="isaction"></comp-action>
     </div>
   </div>
+
+  <-- definir un seul comp- et passer le titre en param ? -->
+  <div class="section">
+    <comp-grammaire :datarow="grammaire"></comp-grammaire>
+    <comp-definition :datarow="definition"></comp-definition>
+    <comp-association :datarow="association"></comp-association>
+    <comp-domain :datarow="domain"></comp-domain>
+    <comp-raffsem :datarow="raffsem"></comp-raffsem>
+    <comp-action :datarow="isaction"></comp-action>
+  </div>
+</div>
 {% endblock %}
