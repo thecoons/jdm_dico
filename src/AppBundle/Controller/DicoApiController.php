@@ -186,4 +186,133 @@ class DicoApiController extends Controller
         return $response;
     }
 
+    /**
+     * @Route("/carac/{mot}/{nb}",name="carac_page")
+     */
+    public function isaAction($mot,$nb)
+    {
+        $em = $this->container->get('neo4j.manager');
+        $user_neo = $this->container->getParameter('neo4j_user');
+        $pass_neo = $this->container->getParameter('neo4j_pass');
+        $host_neo = $this->container->getParameter('neo4j_host');
+        $port_neo = $this->container->getParameter('neo4j_port');
+        $login = sprintf('http://%s:%s@%s:%s',$user_neo,$pass_neo,$host_neo,$port_neo);
+        $client = ClientBuilder::create()
+            ->addConnection('default',$login)
+            ->build();
+        $query = sprintf('match (n:termes)-[r]->(carac:termes) WHERE n.name = "%s" and type(r) = "17" return carac order by r.weight desc limit %d',$mot,$nb);
+        $result = $client->run($query);
+        $arr = array();
+        foreach ($result->records() as $record) {
+            array_push($arr,$record->nodeValue('carac')->values());
+        }
+
+        $response = new Response(json_encode($arr));
+        $response->headers->set('Content-Type','application/json');
+        return $response;
+    }
+
+    /**
+     * @Route("/contraire/{mot}/{nb}",name="contraire_page")
+     */
+    public function isaAction($mot,$nb)
+    {
+        $em = $this->container->get('neo4j.manager');
+        $user_neo = $this->container->getParameter('neo4j_user');
+        $pass_neo = $this->container->getParameter('neo4j_pass');
+        $host_neo = $this->container->getParameter('neo4j_host');
+        $port_neo = $this->container->getParameter('neo4j_port');
+        $login = sprintf('http://%s:%s@%s:%s',$user_neo,$pass_neo,$host_neo,$port_neo);
+        $client = ClientBuilder::create()
+            ->addConnection('default',$login)
+            ->build();
+        $query = sprintf('match (n:termes)-[r]->(contraire:termes) WHERE n.name = "%s" and type(r) = "7" return contraire order by r.weight desc limit %d',$mot,$nb);
+        $result = $client->run($query);
+        $arr = array();
+        foreach ($result->records() as $record) {
+            array_push($arr,$record->nodeValue('contraire')->values());
+        }
+
+        $response = new Response(json_encode($arr));
+        $response->headers->set('Content-Type','application/json');
+        return $response;
+    }
+
+    /**
+     * @Route("/syno/{mot}/{nb}",name="syno_page")
+     */
+    public function isaAction($mot,$nb)
+    {
+        $em = $this->container->get('neo4j.manager');
+        $user_neo = $this->container->getParameter('neo4j_user');
+        $pass_neo = $this->container->getParameter('neo4j_pass');
+        $host_neo = $this->container->getParameter('neo4j_host');
+        $port_neo = $this->container->getParameter('neo4j_port');
+        $login = sprintf('http://%s:%s@%s:%s',$user_neo,$pass_neo,$host_neo,$port_neo);
+        $client = ClientBuilder::create()
+            ->addConnection('default',$login)
+            ->build();
+        $query = sprintf('match (n:termes)-[r]->(syno:termes) WHERE n.name = "%s" and type(r) = "5" return syno order by r.weight desc limit %d',$mot,$nb);
+        $result = $client->run($query);
+        $arr = array();
+        foreach ($result->records() as $record) {
+            array_push($arr,$record->nodeValue('syno')->values());
+        }
+
+        $response = new Response(json_encode($arr));
+        $response->headers->set('Content-Type','application/json');
+        return $response;
+    }
+
+    /**
+     * @Route("/has_part/{mot}/{nb}",name="has_part_page")
+     */
+    public function isaAction($mot,$nb)
+    {
+        $em = $this->container->get('neo4j.manager');
+        $user_neo = $this->container->getParameter('neo4j_user');
+        $pass_neo = $this->container->getParameter('neo4j_pass');
+        $host_neo = $this->container->getParameter('neo4j_host');
+        $port_neo = $this->container->getParameter('neo4j_port');
+        $login = sprintf('http://%s:%s@%s:%s',$user_neo,$pass_neo,$host_neo,$port_neo);
+        $client = ClientBuilder::create()
+            ->addConnection('default',$login)
+            ->build();
+        $query = sprintf('match (n:termes)-[r]->(part:termes) WHERE n.name = "%s" and type(r) = "9" return part order by r.weight desc limit %d',$mot,$nb);
+        $result = $client->run($query);
+        $arr = array();
+        foreach ($result->records() as $record) {
+            array_push($arr,$record->nodeValue('part')->values());
+        }
+
+        $response = new Response(json_encode($arr));
+        $response->headers->set('Content-Type','application/json');
+        return $response;
+    }
+
+    /**
+     * @Route("/specif/{mot}/{nb}",name="specif_page")
+     */
+    public function isaAction($mot,$nb)
+    {
+        $em = $this->container->get('neo4j.manager');
+        $user_neo = $this->container->getParameter('neo4j_user');
+        $pass_neo = $this->container->getParameter('neo4j_pass');
+        $host_neo = $this->container->getParameter('neo4j_host');
+        $port_neo = $this->container->getParameter('neo4j_port');
+        $login = sprintf('http://%s:%s@%s:%s',$user_neo,$pass_neo,$host_neo,$port_neo);
+        $client = ClientBuilder::create()
+            ->addConnection('default',$login)
+            ->build();
+        $query = sprintf('match (n:termes)-[r]->(specif:termes) WHERE n.name = "%s" and type(r) = "8" return specif order by r.weight desc limit %d',$mot,$nb);
+        $result = $client->run($query);
+        $arr = array();
+        foreach ($result->records() as $record) {
+            array_push($arr,$record->nodeValue('specif')->values());
+        }
+
+        $response = new Response(json_encode($arr));
+        $response->headers->set('Content-Type','application/json');
+        return $response;
+    }
 }
