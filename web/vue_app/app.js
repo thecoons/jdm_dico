@@ -14,7 +14,8 @@ setTimeout(function(){
       domain:'',
       raffsem:'',
       isaction:'',
-      test: ''
+      test: '',
+      timer:''
     },
     computed: {
 
@@ -22,20 +23,24 @@ setTimeout(function(){
 
     watch: {
       search: function(val, oldVal){
-        var resource = this.$resource('/search/{word}')
-        resource.get({word:val}).then((data) => {
-          obj = data.body
-          arr = {}
-          for(var k in obj){
-            arr[obj[k].name] = null
-          }
-          this.test = arr
-          $('input.autocomplete').autocomplete({
-            data: arr
-          })
-        },(data) =>{
+        clearTimeout(this.timer)
+        that = this
+        this.timer = setTimeout(function(){
+          var resource = that.$resource('/search/{word}')
+          resource.get({word:val}).then((data) => {
+            obj = data.body
+            arr = {}
+            for(var k in obj){
+              arr[obj[k].name] = null
+            }
+            that.test = arr
+            $('input.autocomplete').autocomplete({
+              data: arr
+            })
+          },(data) =>{
 
-        });
+          });
+        },2000)
       }
     },
     methods: {
