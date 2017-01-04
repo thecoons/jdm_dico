@@ -6,6 +6,7 @@ setTimeout(function(){
     delimiters: ['${','}'],
 
     data: {
+      search: '',
       word: '',
       grammaire: '',
       definition:'',
@@ -18,15 +19,48 @@ setTimeout(function(){
     computed: {
 
     },
+
+    watch: {
+      search: function(val, oldVal){
+        var resource = this.$resource('/search/{word}')
+        resource.get({word:val}).then((data) => {
+          obj = data.body
+          arr = {}
+          for(var k in obj){
+            arr[obj[k].name] = null
+          }
+          this.test = arr
+          $('input.autocomplete').autocomplete({
+            data: arr
+          })
+        },(data) =>{
+
+        });
+      }
+    },
     methods: {
       refreshAll: function(){
-        this.getTestApi(),
-        this.getGrammaireApi(),
-        this.getDefinitionApi(),
-        this.getAssociationApi(5),
-        this.getDomainApi(5),
-        this.getRaffSemApi(5),
-        this.getIsActionApi(5)
+        if(this.search){
+          this.grammaire = "",
+          this.definition = "",
+          this.association = "",
+          this.domain = "",
+          this.raffsem = "",
+          this.isaction = "",
+          this.test = "",
+          this.valideSearch(),
+          this.getTestApi(),
+          this.getGrammaireApi(),
+          this.getDefinitionApi(),
+          this.getAssociationApi(5),
+          this.getDomainApi(5),
+          this.getRaffSemApi(5),
+          this.getIsActionApi(5)
+        }
+      },
+      //Methode interne de gestion de variable
+      valideSearch: function(){
+        this.word = this.search
       },
       // Methode de test de l'api
       getTestApi: function(){

@@ -1,9 +1,8 @@
 {% extends '::base.html.twig' %}
 
 {% block title %}Hello !{% endblock %}
+
 {% block body %}
-
-
 <nav class="white" >
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo grey-text">JeuxDeMots / <span class="black-text">Diko</span></a>
@@ -14,24 +13,24 @@
     <div class="container">
       <div class="input-field col s12 m6 offset-m3">
         <form onsubmit="return false;">
-          <input type="text" id="word" class="autocomplete validate" v-model="word">
+          <input type="text" id="word" class="autocomplete validate" v-model="search">
           <label for="word">Recherche</label>
           <button class="btn waves-effect waves-light center" @click="refreshAll" type="submit" name="action">Rechercher
             <i class="material-icons right">send</i>
           </button>
-
         </form>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <comp-grammaire :datarow="grammaire"></comp-grammaire>
-    <comp-definition :datarow="definition"></comp-definition>
-    <comp-association :datarow="association"></comp-association>
-    <comp-domain :datarow="domain"></comp-domain>
-    <comp-raffsem :datarow="raffsem"></comp-raffsem>
-    <comp-action :datarow="isaction"></comp-action>
+    <h3>${word}</h3>
+    <comp-grammaire :datarow="grammaire" v-if="grammaire.length > 0"></comp-grammaire>
+    <comp-definition :datarow="definition" v-if="definition.length > 0"></comp-definition>
+    <comp-association :datarow="association" v-if="association.length > 0"></comp-association>
+    <comp-domain :datarow="domain" v-if="domain.length > 0"></comp-domain>
+    <comp-raffsem :datarow="raffsem" v-if="raffsem.length > 0"></comp-raffsem>
+    <comp-action :datarow="isaction" v-if="isaction.length > 0"></comp-action>
   </div>
 </div>
 {% endblock %}

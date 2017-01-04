@@ -4,7 +4,6 @@ Vue.component('comp-grammaire',{
                 <div class="col s4">\
                   <h5> Grammaire </h5>\
                   <p> {{datarow}} </p>\
-                  <a class="waves-effect waves-light btn" @click="refresh">button</a>\
                 </div>\
               </div>',
 
@@ -21,9 +20,6 @@ Vue.component('comp-grammaire',{
 
   },
   methods:{
-    refresh: function(){
-      this.$emit('pull')
-    }
 
   },
   mounted: function(){
