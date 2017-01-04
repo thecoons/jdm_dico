@@ -31,6 +31,11 @@
     <comp-domain :datarow="domain" v-if="domain.length > 0"></comp-domain>
     <comp-raffsem :datarow="raffsem" v-if="raffsem.length > 0"></comp-raffsem>
     <comp-action :datarow="isaction" v-if="isaction.length > 0"></comp-action>
+    <comp-carac :datarow="carac" v-if="carac.length > 0"></comp-carac>
+    <comp-contraire :datarow="contraire" v-if="contraire.length > 0"></comp-contraire>
+    <comp-syno :datarow="syno" v-if="syno.length > 0"></comp-syno>
+    <comp-specif :datarow="specif" v-if="specif.length > 0"></comp-specif>
+    <comp-haspart :datarow="haspart" v-if="haspart.length > 0"></comp-haspart>
   </div>
 </div>
 {% endblock %}

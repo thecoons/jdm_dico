@@ -14,6 +14,11 @@ setTimeout(function(){
       domain:'',
       raffsem:'',
       isaction:'',
+      carac:'',
+      contraire:'',
+      syno:'',
+      haspart:'',
+      specif:'',
       test: '',
       timer:''
     },
@@ -52,6 +57,11 @@ setTimeout(function(){
           this.domain = "",
           this.raffsem = "",
           this.isaction = "",
+          this.carac = "",
+          this.contraire = "",
+          this.syno = "",
+          this.haspart = "",
+          this.specif = "",
           this.test = "",
           this.valideSearch(),
           this.getTestApi(),
@@ -60,7 +70,12 @@ setTimeout(function(){
           this.getAssociationApi(5),
           this.getDomainApi(5),
           this.getRaffSemApi(5),
-          this.getIsActionApi(5)
+          this.getIsActionApi(5),
+          this.getCaracApi(5),
+          this.getContraireApi(5),
+          this.getSynoApi(5),
+          this.getHaspartApi(5),
+          this.getSpecifApi(5)
         }
       },
       //Methode interne de gestion de variable
@@ -128,6 +143,51 @@ setTimeout(function(){
           this.isaction =  data.body
         },(data) =>{
           this.getIsActionApi(nb)
+        });
+      },
+      // Methode carac
+      getCaracApi: function(nb){
+        var resource = this.$resource("/carac/{word}/"+nb)
+        resource.get({word:this.word}).then((data) => {
+          this.carac =  data.body
+        },(data) =>{
+          this.getCaracApi(nb)
+        });
+      },
+      // Methode contraire
+      getContraireApi: function(nb){
+        var resource = this.$resource("/contraire/{word}/"+nb)
+        resource.get({word:this.word}).then((data) => {
+          this.contraire =  data.body
+        },(data) =>{
+          this.getContraireApi(nb)
+        });
+      },
+      // Methode syno
+      getSynoApi: function(nb){
+        var resource = this.$resource("/syno/{word}/"+nb)
+        resource.get({word:this.word}).then((data) => {
+          this.syno =  data.body
+        },(data) =>{
+          this.getSynoApi(nb)
+        });
+      },
+      // Methode has_part
+      getHaspartApi: function(nb){
+        var resource = this.$resource("/has_part/{word}/"+nb)
+        resource.get({word:this.word}).then((data) => {
+          this.haspart =  data.body
+        },(data) =>{
+          this.getHaspartApi(nb)
+        });
+      },
+      // Methode specif
+      getSpecifApi: function(nb){
+        var resource = this.$resource("/specif/{word}/"+nb)
+        resource.get({word:this.word}).then((data) => {
+          this.specif =  data.body
+        },(data) =>{
+          this.getSpecifApi(nb)
         });
       },
     },

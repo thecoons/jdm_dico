@@ -11,7 +11,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
   </head>
   <body>
-    
+
     {% block body %}{% endblock %}
     {% block javascripts %}
     <script src="{{asset('vendor/jquery/dist/jquery.js')}}"></script>
@@ -24,7 +24,12 @@
     <script src="{{asset('vue_app/comp-association.js')}}"></script>
     <script src="{{asset('vue_app/comp-domain.js')}}"></script>
     <script src="{{asset('vue_app/comp-raffsem.js')}}"></script>
-    <script src="{{asset('vue_app/comp-action.js')}}"></script>        
+    <script src="{{asset('vue_app/comp-action.js')}}"></script>
+    <script src="{{asset('vue_app/comp-carac.js')}}"></script>
+    <script src="{{asset('vue_app/comp-contraire.js')}}"></script>
+    <script src="{{asset('vue_app/comp-syno.js')}}"></script>
+    <script src="{{asset('vue_app/comp-specif.js')}}"></script>
+    <script src="{{asset('vue_app/comp-haspart.js')}}"></script>                       
     <script src="{{asset('vue_app/app.js')}}"></script>
     <script src="{{asset('vendor/js/own.js')}}"></script>
     {% endblock %}
