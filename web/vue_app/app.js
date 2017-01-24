@@ -3,8 +3,8 @@ setTimeout(function(){
     Vue.filter('prettify', function (value) {
 	return value.split(/[+:]/).map(function(x){return x.toLowerCase()}).join(' ')
     }),
-    Vue.filter('weightSort', function (array) {
-	return array.sort(function(a,b){return a -b })
+    Vue.filter('noHtml', function (value) {
+	return value.replace(/<(?:.|\n)*?>/gm, '');
     }),
     app = new Vue({
 	
