@@ -4,8 +4,8 @@ Vue.component('comp-association',{
 <h5> Associations </h5>\
 <ul class="definitions">\
 <li v-for="def in sortedArray">\
-<span v-if="def.nf">{{def.nf}}  ({{def.weight}})</span>\
-<span v-else>{{def.name}}  ({{def.weight}})</span>\
+<span v-if="def.nf">{{def.nf}}</a> ({{def.weight}})</span>\
+<span v-else>{{def.name}}</a> ({{def.weight}})</span>\
 </li>\
 </ul>\
 </div>',

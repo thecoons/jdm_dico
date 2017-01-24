@@ -22,7 +22,6 @@
 		</div>
 	    </div>
 	</div>
-	
 	<div class="section">
 	    <div class="container">
 		<div class="row title">
@@ -37,6 +36,15 @@
 			<comp-{{section}} :datarow="{{section}}" v-if="{{section}}.length > 0"></comp-{{section}}>
 		    </div>
 		{% endfor %}
+		<div class="col s12 m6 offset-m3 center">
+		    <div v-if="counter > 0" class="preloader-wrapper big active">
+			<div class="spinner-layer spinner-blue-only">
+			    <div class="circle-clipper left">
+				<div class="circle"></div>
+			    </div>
+			</div>
+		    </div>
+		</div>
 	    </div>
 	</div>
     </div>
