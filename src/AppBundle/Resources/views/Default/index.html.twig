@@ -1,50 +1,43 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Hello !{% endblock %}
+{% block title %}Diko{% endblock %}
 
 {% block body %}
-<nav class="white" >
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo grey-text">JeuxDeMots / <span class="black-text">Diko</span></a>
-  </div>
-</nav>
-<div id="app">
-  <div class="row search-field">
-    <div class="container">
-      <div class="input-field col s12 m6 offset-m3">
-        <form onsubmit="return false;">
-          <input type="text" id="word" class="autocomplete validate" v-model="search">
-          <label for="word">Recherche</label>
-          <button class="btn waves-effect waves-light center" @click="refreshAll" type="submit" name="action">Rechercher
-            <i class="material-icons right">send</i>
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="container">
-      <div class="row title">
-	<div class="col s12 m6 offset-m3 title">
-	  <h3>${word.charAt(0).toUpperCase() + word.slice(1)}</h3>
+    <nav class="white" >
+	<div class="nav-wrapper">
+	    <a href="/" class="brand-logo grey-text">JeuxDeMots / <span class="black-text">Diko</span></a>
 	</div>
-      </div>
-      <div class="row">
-	<comp-grammaire :datarow="grammaire" v-if="grammaire.length > 0"></comp-grammaire>
-      </div>
-      <comp-definition :datarow="definition" v-if="definition.length > 0"></comp-definition>
-	<comp-association :datarow="association" v-if="association.length > 0"></comp-association>
-	<comp-domain :datarow="domain" v-if="domain.length > 0"></comp-domain>
-	<comp-raffsem :datarow="raffsem" v-if="raffsem.length > 0"></comp-raffsem>
-	<comp-action :datarow="isaction" v-if="isaction.length > 0"></comp-action>
-	<comp-carac :datarow="carac" v-if="carac.length > 0"></comp-carac>
-	<comp-contraire :datarow="contraire" v-if="contraire.length > 0"></comp-contraire>
-	<comp-syno :datarow="syno" v-if="syno.length > 0"></comp-syno>
-	<comp-specif :datarow="specif" v-if="specif.length > 0"></comp-specif>
-	<comp-haspart :datarow="haspart" v-if="haspart.length > 0"></comp-haspart>
-      </div>
+    </nav>
+    <div id="app">
+	<div class="row search-field">
+	    <div class="container">
+		<div class="input-field col s12 m6 offset-m3">
+		    <form onsubmit="return false;">
+			<input type="text" id="word" class="autocomplete validate" v-model="search">
+			<label for="word">Recherche</label>
+			<button class="btn waves-effect waves-light center" @click="refreshAll" type="submit" name="action">Rechercher
+			    <i class="material-icons right">send</i>
+			</button>
+		    </form>
+		</div>
+	    </div>
+	</div>
+
+	<div class="section">
+	    <div class="container">
+		<div class="row title">
+		    <div class="col s12 m6 offset-m3 title">
+			<h3>${word.charAt(0).toUpperCase() + word.slice(1)} <comp-grammaire :datarow="grammaire" v-if="grammaire.length > 0"></comp-grammaire></h3>
+		    </div>
+		</div>
+
+		{% set sections = ["definition","association","domain","raffsem","action","carac","contraire","syno","haspart","specif"] %}
+		{% for section in sections %}
+		    <div class="row">   
+			<comp-{{section}} :datarow="{{section}}" v-if="{{section}}.length > 0"></comp-{{section}}>
+		    </div>
+		{% endfor %}
+	    </div>
+	</div>
     </div>
-  </div>
-</div>
 {% endblock %}

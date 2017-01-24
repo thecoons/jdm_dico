@@ -1,11 +1,13 @@
 Vue.component('comp-definition',{
   props: ['datarow'],
-  template: '<div class="row">\
-                <div class="col s4">\
-                  <h5> Definition </h5>\
-                  <p> {{datarow}} </p>\
-                </div>\
-              </div>',
+  template: '<div class="col s12 m6 offset-m3">\
+<h5> Définitions </h5>\
+<ul class="definitions">\
+<li v-for="def in datarow">\
+{{ def.definition }}\
+</li>\
+</ul>\
+</div>',
 
 
   data: function(){

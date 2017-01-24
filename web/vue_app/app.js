@@ -1,7 +1,10 @@
 
 setTimeout(function(){
     Vue.filter('prettify', function (value) {
-	return value.split(/[+:]/).join(' ')
+	return value.split(/[+:]/).map(function(x){return x.toLowerCase()}).join(' ')
+    }),
+    Vue.filter('weightSort', function (array) {
+	return array.sort(function(a,b){return a -b })
     }),
     app = new Vue({
 	
@@ -17,7 +20,7 @@ setTimeout(function(){
 	    association:'',
 	    domain:'',
 	    raffsem:'',
-	    isaction:'',
+	    action:'',
 	    carac:'',
 	    contraire:'',
 	    syno:'',
@@ -60,7 +63,7 @@ setTimeout(function(){
 		    this.association = "",
 		    this.domain = "",
 		    this.raffsem = "",
-		    this.isaction = "",
+		    this.action = "",
 		    this.carac = "",
 		    this.contraire = "",
 		    this.syno = "",
@@ -74,7 +77,7 @@ setTimeout(function(){
 		    this.getAssociationApi(5),
 		    this.getDomainApi(5),
 		    this.getRaffSemApi(5),
-		    this.getIsActionApi(5),
+		    this.getActionApi(5),
 		    this.getCaracApi(5),
 		    this.getContraireApi(5),
 		    this.getSynoApi(5),
@@ -140,13 +143,13 @@ setTimeout(function(){
 		    this.getRaffSemApi(nb)
 		});
 	    },
-	    // Methode isAction
-	    getIsActionApi: function(nb){
+	    // Methode Action
+	    getActionApi: function(nb){
 		var resource = this.$resource("/isa/{word}/"+nb)
 		resource.get({word:this.word}).then((data) => {
-		    this.isaction =  data.body
+		    this.action =  data.body
 		},(data) =>{
-		    this.getIsActionApi(nb)
+		    this.getActionApi(nb)
 		});
 	    },
 	    // Methode carac

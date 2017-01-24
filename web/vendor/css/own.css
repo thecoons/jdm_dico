@@ -16,6 +16,10 @@ nav .nav-wrapper form, nav .nav-wrapper form .input-field{
     margin-top:40px;
 }
 
+.definitions li{
+    list-style-type: circle !important;
+}
+
 .title{
     margin-bottom: 0px;
 }

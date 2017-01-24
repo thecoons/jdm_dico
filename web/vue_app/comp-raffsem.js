@@ -1,12 +1,13 @@
 Vue.component('comp-raffsem',{
   props: ['datarow'],
-  template: '<div class="row">\
-                <div class="col s4">\
-                  <h5> Rafinement Sémentique </h5>\
-                  <p> {{datarow}} </p>\
-                </div>\
-              </div>',
-
+  template: '<div class="col s12 m6 offset-m3">\
+<h5> Raffinements </h5>\
+<ul class="definitions">\
+<li v-for="def in datarow">\
+{{ def.nf }}\
+</li>\
+</ul>\
+</div>',
 
   data: function(){
       return {

@@ -1,13 +1,15 @@
 Vue.component('comp-syno',{
   props: ['datarow'],
-  template: '<div class="row">\
-                <div class="col s4">\
-                  <h5> Synonime </h5>\
-                  <p> {{datarow}} </p>\
-                </div>\
-              </div>',
-
-
+  template: '<div class="col s12 m6 offset-m3">\
+<h5> Synonymes </h5>\
+<ul class="definitions">\
+<li v-for="def in datarow">\
+<span v-if="def.nf">{{def.nf}}</span>\
+<span v-else>{{def.name}}</span>\
+</li>\
+</ul>\
+</div>',
+    
   data: function(){
       return {
         message: ""
