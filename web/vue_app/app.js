@@ -7,9 +7,9 @@ setTimeout(function(){
 	return value.replace(/<(?:.|\n)*?>/gm, '');
     }),
     app = new Vue({
-	
+
 	el: '#app',
-	
+
 	delimiters: ['${','}'],
 
 	data: {
@@ -33,7 +33,6 @@ setTimeout(function(){
 	computed: {
 
 	},
-
 	watch: {
 	    search: function(val, oldVal){
 		clearTimeout(this.timer)
@@ -99,6 +98,7 @@ setTimeout(function(){
 		    this.counter=this.counter-1;
 		    this.test = data.body
 		},(data) =>{
+        this.counter=this.counter-1;
 		    this.getTestApi()
 		});
 	    },
@@ -110,7 +110,8 @@ setTimeout(function(){
 		    this.counter=this.counter-1;
 		    this.grammaire = data.body
 		},(data) => {
-		    this.getGrammaireApi()
+        this.counter=this.counter-1;
+        this.getGrammaireApi()
 		});
 	    },
 	    // Methode de definition
@@ -121,6 +122,7 @@ setTimeout(function(){
 		    this.counter=this.counter-1;
 		    this.definition =  data.body
 		},(data) =>{
+        this.counter=this.counter-1;
 		    this.getDefinitionApi()
 		});
 	    },
@@ -132,6 +134,7 @@ setTimeout(function(){
 		    this.counter=this.counter-1;
 		    this.association =  data.body
 		},(data) =>{
+        this.counter=this.counter-1;
 		    this.getAssociationApi(nb)
 		});
 	    },
@@ -143,6 +146,7 @@ setTimeout(function(){
 		    this.counter=this.counter-1;
 		    this.domain =  data.body
 		},(data) =>{
+        this.counter=this.counter-1;
 		    this.getDomainApi(nb)
 		});
 	    },
@@ -154,6 +158,7 @@ setTimeout(function(){
 		    this.counter=this.counter-1;
 		    this.raffsem =  data.body
 		},(data) =>{
+        this.counter=this.counter-1;
 		    this.getRaffSemApi(nb)
 		});
 	    },
@@ -165,6 +170,7 @@ setTimeout(function(){
 		    this.counter=this.counter-1;
 		    this.action =  data.body
 		},(data) =>{
+        this.counter=this.counter-1;
 		    this.getActionApi(nb)
 		});
 	    },
@@ -176,6 +182,7 @@ setTimeout(function(){
 		    this.counter=this.counter-1;
 		    this.carac =  data.body
 		},(data) =>{
+        this.counter=this.counter-1;
 		    this.getCaracApi(nb)
 		});
 	    },
@@ -187,6 +194,7 @@ setTimeout(function(){
 		    this.counter=this.counter-1;
 		    this.contraire =  data.body
 		},(data) =>{
+        this.counter=this.counter-1;
 		    this.getContraireApi(nb)
 		});
 	    },
@@ -198,6 +206,7 @@ setTimeout(function(){
 		    this.counter=this.counter-1;
 		    this.syno =  data.body
 		},(data) =>{
+        this.counter=this.counter-1;
 		    this.getSynoApi(nb)
 		});
 	    },
@@ -209,6 +218,7 @@ setTimeout(function(){
 		    this.counter=this.counter-1;
 		    this.haspart =  data.body
 		},(data) =>{
+        this.counter=this.counter-1;
 		    this.getHaspartApi(nb)
 		});
 	    },
@@ -220,6 +230,7 @@ setTimeout(function(){
 		    this.counter=this.counter-1;
 		    this.specif =  data.body
 		},(data) =>{
+        this.counter=this.counter-1;
 		    this.getSpecifApi(nb)
 		});
 	    },
